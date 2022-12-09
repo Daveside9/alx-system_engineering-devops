@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Update apt-get package manager
+
+sudo apt-get update
+
+# Install Apache web server
+
+sudo apt-get install apache2 -y
+
+# Install MySQL database server
+
+sudo apt-get install mysql-server -y
+
+# Install PHP scripting language interpreter
+
+sudo apt-get install php libapache2-mod-php -y
+
+# Restart Apache to enable PHP module
+
+sudo service apache2 restart
