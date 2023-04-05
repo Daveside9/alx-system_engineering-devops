@@ -1,5 +1,4 @@
-# ssh config file
-
-Host *
-    PasswordAuthentication no
-    IdentifyFile ~/.ssh/school
+# holberton server config options
+Host 54.197.122.189
+    IdentityFile ~/.ssh/school
+    Protocol 2
