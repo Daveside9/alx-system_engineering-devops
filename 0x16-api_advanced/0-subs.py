@@ -1,29 +1,22 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
 """
-Created on Thu Feb 17 11:47:53 2023
-@author: Samuel Onoja
+Query Reddit API for NO OF subscribers for a given subreddit
 """
-from json import loads
-from requests import get
+import requests
 
 
 def number_of_subscribers(subreddit):
-    """ecursive function that queries the Reddit API and returns a list
-    containing the titles of all hot articles for a given subreddit. If no
-    results are found for the given subreddit, the function should return None
     """
-    url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
-    headers = {
-        'User-Agent':
-        'Mozilla/5.0 (Windows; U; Windows NT 5.1; de; rv:1.9.2.3) \
-        Gecko/20100401 Firefox/3.6.3 (FM Scene 4.6.1)'
-    }
-    response = get(url, headers=headers)
-    reddits = response.json()
+        return NO OF subscribers for a given subreddit
+        return 0 if invalid
+    """
+    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
 
-    try:
-        subscribers = reddits.get('data').get('subscribers')
-        return int(subscribers)
-    except:
+    headers = requests.utils.default_headers()
+    headers.update({'User-Agent': 'My User Agent 1.0'})
+
+    r = requests.get(url, headers=headers).json()
+    subscribers = r.get('data', {}).get('subscribers')
+    if not subscribers:
         return 0
+    return subscribers
