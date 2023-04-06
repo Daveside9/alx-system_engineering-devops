@@ -1,4 +1,8 @@
-# holberton server config options
-Host 54.197.122.189
+# Configure ssh client so that you can connect to a server minus a password.
+Host *
+    SendEnv LANG LC_*
+    HashKnownHosts yes
+    GSSAPIAuthentication yes
+    GSSAPIDelegateCredentials no
     IdentityFile ~/.ssh/school
-    Protocol 2
+    PasswordAuthentication no
