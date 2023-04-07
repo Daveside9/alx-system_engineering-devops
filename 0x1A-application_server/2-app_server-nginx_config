@@ -1,0 +1,30 @@
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        root /var/www/html;
+        index index.html index.htm index.nginx-debian.html;
+
+#       Beginning of my modification
+
+        location /airbnb-onepage/ {
+                proxy_pass http://0.0.0.0:5000;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+        }
+
+#       End of my modification
+
+        server_name _;
+        add_header X-Served-By $hostname;
+        location / {
+                try_files $uri $uri/ =404;
+        }
+        if ($request_filename ~ redirect_me){
+                rewrite ^ https://youtube.com permanent;
+        }
+        error_page 404 /404.html;
+        location = /404.html {
+                internal;
+        }
+}
