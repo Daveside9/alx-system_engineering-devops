@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Kill gunicorn worker processe gracefully
+pkill -HUP gunicorn
